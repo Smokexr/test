@@ -23,11 +23,12 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            document.getElementById("input").addEventListener("keyup", function (e) {
+            document.getElementById("input").addEventListener("keydown", function (e) {
 
                 if (e.key === "Enter") {
+
                     document.title = "Hello";
-                    document.getElementById("testtt").innerHTML = "^0^";
+                    document.getElementById("testtt").innerHTML = e.code;
                 }
             })
         });
