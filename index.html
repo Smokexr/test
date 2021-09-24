@@ -91,7 +91,7 @@
             link = document.createElement("link");
             link.rel = "stylesheet";
 
-            if (navigator.userAgent.indexOf("iPhone")) {
+            if (navigator.userAgent.indexOf("iPhone") != -1) {
                 link.href = "style_iPhone.css";
             }
             else {
