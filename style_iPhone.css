@@ -13,8 +13,7 @@ html, body
 }
 
 #container {
-    border:  5px solid green;
-    margin: 10px;
+    border:  5px solid gold;
     width: 100%;
 }
 
@@ -37,7 +36,9 @@ html, body
 .sentence {
     border: 2px solid black;
     line-height: 70px;
+    margin-left: 10px;
     text-align: justify;
+    width: calc(100% - 20px);
 }
 
     .sentence span {
