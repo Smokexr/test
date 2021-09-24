@@ -44,14 +44,12 @@
 
                 if (e.key === "Enter") {
 
-                    document.getElementById("container").innerHTML = navigator.userAgent;
-
-                    return;
-
                     document.title = "Hello";
                     var container = document.getElementById("container");
 
                     container.innerHTML = "";
+
+                    document.getElementById("container").innerHTML = navigator.userAgent;
 
                     var page = document.createElement("div");
                     container.appendChild(page);
