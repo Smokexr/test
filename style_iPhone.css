@@ -24,9 +24,9 @@ html, body
 
     .page .pageValue {
         color: #ddd;
-        font-size: 15px;
+        font-size: 20px;
         position: absolute;
-        right: 0;
+        right: 10px;
     }
 
 .chapter {
@@ -48,12 +48,12 @@ html, body
         }
 
         .sentence span span:first-child {
-            font-size: 15px;
-            line-height: 15px;
+            font-size: 20px;
+            line-height: 20px;
             text-align: center;
         }
 
         .sentence span span:last-child {
-            line-height: 35px;
-            font-size: 30px;
+            line-height: 40px;
+            font-size: 35px;
         }
