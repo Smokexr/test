@@ -89,12 +89,21 @@
             link = document.createElement("link");
             link.rel = "stylesheet";
 
+            var div = document.createElement("div");
+            document.getElementById("container").appendChild(div);
+            div.style.marginTop = "20px";
+            div.style.borderTop = "1px solid black";
+
             if (navigator.userAgent.indexOf("iPhone") != -1) {
+                div.innerHTML = "iphone";
                 link.href = "style_iPhone.css";
             }
             else {
+                div.innerHTML = "not iphone";
                 link.href = "style.css";
             }
+
+            div = null;
 
             document.head.appendChild(link);
             link = null;
