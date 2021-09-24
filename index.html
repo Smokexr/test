@@ -10,6 +10,12 @@
     <script src="aes.js"></script>
 
     <style>
+
+        #container {
+            border:  1px solid red;
+            width: 100%;
+        }
+
         .input {
             border: none;
             cursor: default;
@@ -32,7 +38,7 @@
 </head>
 <body>
     
-    <div id="testtt">
+    <div id="container">
         <input type="text" class="input" id="input" placeholder="Hello, World!" />
     </div>
     
@@ -43,10 +49,8 @@
 
                 if (e.key === "Enter") {
 
-                    link = document.createElement("link")
-
                     document.title = "Hello";
-                    document.getElementById("testtt").innerHTML = e.code;
+                    document.getElementById("container").innerHTML = e.code;
                 }
             })
         });
