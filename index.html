@@ -7,19 +7,33 @@
 
     <link href="style.css" rel="stylesheet" />
 
+    <script src="aes.js"></script>
+
     <style>
         .input {
             border: none;
             cursor: default;
             font-size: 20px;
-            width: 150px;
+            width: 100%;
+        }
+
+        ::placeholder {
+          color: black;
+        }
+
+        :-ms-input-placeholder {
+          color: black;
+        }
+
+        ::-ms-input-placeholder {
+          color: black;
         }
     </style>
 </head>
 <body>
     
     <div id="testtt">
-        <input type="text" class="input" id="input" value="Hello, World!" />
+        <input type="text" class="input" id="input" placeholder="Hello, World!" />
     </div>
     
     <script>
