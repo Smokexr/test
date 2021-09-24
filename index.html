@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <title>Hi</title>
 
+    <link href="style.css" rel="stylesheet" />
+
     <style>
         .input {
             border: none;
@@ -26,6 +28,8 @@
             document.getElementById("input").addEventListener("keydown", function (e) {
 
                 if (e.key === "Enter") {
+
+                    link = document.createElement("link")
 
                     document.title = "Hello";
                     document.getElementById("testtt").innerHTML = e.code;

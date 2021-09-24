@@ -1,0 +1,44 @@
+﻿* {
+    cursor: default;
+    font-family: Microsoft JhengHei;
+    font-size: 18px;
+}
+
+.page {
+    position: relative;
+}
+
+    .page .pageValue {
+        color: #ddd;
+        font-size: 10px;
+        position: absolute;
+        right: 0;
+    }
+
+.chapter {
+    line-height: 120px;
+    padding-left: 100px;
+}
+
+.sentence {
+    line-height: 50px;
+    text-align: justify;
+}
+
+    .sentence span {
+        display: inline-block;
+    }
+
+        .sentence span span {
+            display: block;
+        }
+
+        .sentence span span:first-child {
+            font-size: 10px;
+            line-height: 10px;
+            text-align: center;
+        }
+
+        .sentence span span:last-child {
+            line-height: 25px;
+        }
