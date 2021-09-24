@@ -11,11 +11,6 @@
 
     <style>
 
-        #container {
-            border:  1px solid red;
-            width: 100%;
-        }
-
         .input {
             border: none;
             cursor: default;
@@ -50,7 +45,38 @@
                 if (e.key === "Enter") {
 
                     document.title = "Hello";
-                    document.getElementById("container").innerHTML = e.code;
+                    var container = document.getElementById("container");
+
+                    container.innerHTML = "";
+
+                    var page = document.createElement("div");
+                    container.appendChild(page);
+                    page.className = "page";
+
+                    var pageValue = document.createElement("span");
+                    page.appendChild(pageValue);
+                    pageValue.className = "pageValue";
+                    pageValue.innerHTML = 11;
+                    pageValue = null;
+
+                    var chapter = document.createElement("div");
+                    page.appendChild(chapter);
+                    chapter.className = "chapter";
+                    chapter.innerHTML = 1;
+                    chapter = null;
+
+                    var sentence = document.createElement("div");
+                    page.appendChild(sentence);
+                    sentence.className = "sentence";
+                    sentence.innerHTML = "　　虛擬黑板的右上方，出現了一個閃爍的黃色信件圖示。";
+                    sentence = null;
+
+                    var sentence = document.createElement("div");
+                    page.appendChild(sentence);
+                    sentence.className = "sentence";
+                    sentence.innerHTML = "　　從教室、學生到老師，都確實存在於現實中，但透明的黑板和黑板上密密麻麻的算式則不一樣。老師寫在空中的數字跟記號，是透過裝在春雪脖子後方的「<span><span>Neuro Linker</span><span>神經連結裝置</span></span>」，直接於腦內形成影像資訊。";
+                    sentence = null;
+
                 }
             })
         });
