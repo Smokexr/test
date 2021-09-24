@@ -1,6 +1,21 @@
 ﻿* {
+    box-sizing: border-box;
+    cursor: default;
     font-family: Microsoft JhengHei;
-    font-size: 18px;
+    font-size: 25px;
+}
+
+html, body
+{
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+#container {
+    border:  1px solid blue;
+    padding: 10px;
+    width: 100%;
 }
 
 .page {
@@ -9,18 +24,18 @@
 
     .page .pageValue {
         color: #ddd;
-        font-size: 10px;
+        font-size: 15px;
         position: absolute;
         right: 0;
     }
 
 .chapter {
-    line-height: 120px;
+    line-height: 140px;
     padding-left: 100px;
 }
 
 .sentence {
-    line-height: 50px;
+    line-height: 70px;
     text-align: justify;
 }
 
@@ -33,11 +48,12 @@
         }
 
         .sentence span span:first-child {
-            font-size: 10px;
-            line-height: 10px;
+            font-size: 15px;
+            line-height: 15px;
             text-align: center;
         }
 
         .sentence span span:last-child {
-            line-height: 25px;
+            line-height: 35px;
+            font-size: 30px;
         }
