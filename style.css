@@ -2,7 +2,7 @@
     box-sizing: border-box;
     cursor: default;
     font-family: Microsoft JhengHei;
-    font-size: 18px;
+    font-size: 25px;
 }
 
 html, body
@@ -24,7 +24,7 @@ html, body
 
     .page .pageValue {
         color: #ddd;
-        font-size: 10px;
+        font-size: 15px;
         position: absolute;
         right: 0;
     }
@@ -48,11 +48,12 @@ html, body
         }
 
         .sentence span span:first-child {
-            font-size: 10px;
-            line-height: 10px;
+            font-size: 15px;
+            line-height: 15px;
             text-align: center;
         }
 
         .sentence span span:last-child {
-            line-height: 25px;
+            line-height: 30px;
+            font-size: 25px;
         }
