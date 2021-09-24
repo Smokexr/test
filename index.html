@@ -3,15 +3,34 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Hi</title>
+
+    <style>
+        .input {
+            border: none;
+            cursor: default;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
-    <div id="testtt">testtttssa33333</div>
+    
+    <div id="testtt">
+        <input type="text" class="input" id="input" value="Hello, World!" />
+    </div>
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            document.getElementById("testtt").innerHTML = "Hello, World!";
+           
+
+            document.getElementById("input").addEventListener("keyup", function (e) {
+
+                if (e.key === "Enter") {
+                    document.title = "Hello";
+                    document.getElementById("testtt").innerHTML = "^0^";
+                }
+            })
         });
 
     </script>
