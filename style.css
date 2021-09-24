@@ -13,7 +13,7 @@ html, body
 }
 
 #container {
-    border:  1px solid blue;
+    border:  1px solid red;
     padding: 10px;
     width: 100%;
 }
@@ -30,12 +30,12 @@ html, body
     }
 
 .chapter {
-    line-height: 120px;
+    line-height: 140px;
     padding-left: 100px;
 }
 
 .sentence {
-    line-height: 50px;
+    line-height: 70px;
     text-align: justify;
 }
 
@@ -54,6 +54,6 @@ html, body
         }
 
         .sentence span span:last-child {
-            line-height: 30px;
+            line-height: 35px;
             font-size: 25px;
         }
