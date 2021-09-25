@@ -33,10 +33,11 @@ html, body
 }
 
 .sentence {
+    border: 1px solid red;
     line-height: 70px;
     margin-left: 10px;
     text-align: justify;
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
 }
 
     .sentence span {
