@@ -13,7 +13,6 @@ html, body
 }
 
 #container {
-    border: 5px solid black;
     width: 100%;
 }
 
@@ -34,7 +33,6 @@ html, body
 }
 
 .sentence {
-    border: 1px solid red;
     line-height: 70px;
     margin-left: 20px;
     text-align: justify;
