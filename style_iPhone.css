@@ -24,7 +24,7 @@ html, body
         color: #ddd;
         font-size: 20px;
         position: absolute;
-        right: 10px;
+        right: 20px;
     }
 
 .chapter {
@@ -57,5 +57,5 @@ html, body
 
             .sentence span span:last-child {
                 line-height: 35px;
-                font-size: 30px;
+                font-size: 32px;
             }
