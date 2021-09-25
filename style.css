@@ -21,11 +21,14 @@
 
 .sentence {
     line-height: 50px;
+    min-height: 50px;
     text-align: justify;
+    text-indent: 2em;
 }
 
     .sentence span {
         display: inline-block;
+        text-indent: 0;
     }
 
         .sentence span span {

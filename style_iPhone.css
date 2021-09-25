@@ -36,26 +36,28 @@ html, body
 .sentence {
     border: 1px solid red;
     line-height: 70px;
-    margin-left: 10px;
+    margin-left: 20px;
     text-align: justify;
+    text-indent: 2em;
     width: calc(100% - 40px);
 }
 
     .sentence span {
         display: inline-block;
+        text-indent: 0;
     }
 
         .sentence span span {
             display: block;
         }
 
-        .sentence span span:first-child {
-            font-size: 20px;
-            line-height: 20px;
-            text-align: center;
-        }
+            .sentence span span:first-child {
+                font-size: 20px;
+                line-height: 20px;
+                text-align: center;
+            }
 
-        .sentence span span:last-child {
-            line-height: 35px;
-            font-size: 30px;
-        }
+            .sentence span span:last-child {
+                line-height: 35px;
+                font-size: 30px;
+            }
