@@ -32,6 +32,15 @@ function GetData(value) {
         return null;
     }
 
+    if (data === undefined ||
+        data === null ||
+        typeof (data) !== "string" ||
+        data.length === 0) {
+
+        SetDefault();
+        return null;
+    }
+
     try {
         result = CryptoJS.AES
             .decrypt(data, value)
