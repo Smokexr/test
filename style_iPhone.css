@@ -2,7 +2,7 @@
     box-sizing: border-box;
     cursor: default;
     font-family: Microsoft JhengHei;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 html, body
@@ -29,7 +29,7 @@ html, body
 
 .chapter {
     line-height: 7em;
-    padding-left: 5em;
+    padding: 2em 0 0 5em;
 }
 
 .sentence {
