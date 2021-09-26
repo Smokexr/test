@@ -9,19 +9,19 @@
 
     .page .pageValue {
         color: #ddd;
-        font-size: 10px;
+        font-size: 0.5em;
         position: absolute;
         right: 0;
     }
 
 .chapter {
-    line-height: 120px;
-    padding-left: 100px;
+    line-height: 7em;
+    padding-left: 5em;
 }
 
 .sentence {
-    line-height: 50px;
-    min-height: 50px;
+    line-height: 3em;
+    min-height: 3em;
     text-align: justify;
     text-indent: 2em;
 }
@@ -36,13 +36,13 @@
         }
 
         .sentence span span:first-child {
-            font-size: 10px;
-            line-height: 10px;
+            font-size: 0.5em;
+            line-height: 1em;
             text-align: center;
         }
 
         .sentence span span:last-child {
-            line-height: 25px;
+            line-height: 1.5em;
         }
 
 ::placeholder {

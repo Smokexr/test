@@ -22,20 +22,20 @@ html, body
 
     .page .pageValue {
         color: #ddd;
-        font-size: 20px;
+        font-size: 0.5em;
         position: absolute;
         right: 20px;
     }
 
 .chapter {
-    line-height: 140px;
-    padding: 50px 0 0 100px;
+    line-height: 7em;
+    padding-left: 5em;
 }
 
 .sentence {
-    line-height: 70px;
+    line-height: 3em;
     margin-left: 20px;
-    min-height: 70px;
+    min-height: 3em;
     text-align: justify;
     text-indent: 2em;
     width: calc(100% - 40px);
@@ -51,14 +51,13 @@ html, body
         }
 
             .sentence span span:first-child {
-                font-size: 20px;
-                line-height: 20px;
+                font-size: 0.5em;
+                line-height: 1em;
                 text-align: center;
             }
 
             .sentence span span:last-child {
-                line-height: 35px;
-                font-size: 30px;
+                line-height: 1.5em;
             }
 
 ::placeholder {
