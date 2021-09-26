@@ -147,6 +147,15 @@ function SetContainer(value) {
             chapter = null;
         }
 
+        if (pageData.SentenceCell === undefined ||
+            pageData.SentenceCell === null ||
+            pageData.SentenceCell.length === 0) {
+
+            pageData = null;
+            page = null;
+            continue;
+        }
+
         for (var i = 0; i < pageData.SentenceCell.length; i++) {
             sentence = document.createElement("div");
             page.appendChild(sentence);
