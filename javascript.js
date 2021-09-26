@@ -126,7 +126,7 @@ function SetContainer(value) {
         pageData = dataCell[pageIndex];
 
         if (pageData.Title !== undefined && pageData.Title !== null) {
-            document.head.title = pageData.Title;
+            document.title = pageData.Title;
         }
 
         page = document.createElement("div");
