@@ -252,6 +252,7 @@ function SetDefault(isText) {
 
         container.style.cursor = "default";
         container.style.fontSize = "40px";
+        container.style.margin = "9px 0 0 2px";
         container.style.width = "100%";
     }
 
