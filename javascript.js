@@ -211,7 +211,7 @@ function SetDefault(isText) {
 
         input.style.border = "none";
         input.style.cursor = "default";
-        input.style.fontSize = "20px";
+        input.style.fontSize = "40px";
         input.style.width = "100%";
 
         input.addEventListener("keydown", function (e) {
@@ -251,7 +251,7 @@ function SetDefault(isText) {
         container.innerHTML = "Hello, World!";
 
         container.style.cursor = "default";
-        container.style.fontSize = "20px";
+        container.style.fontSize = "40px";
         container.style.width = "100%";
     }
 
