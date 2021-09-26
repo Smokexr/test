@@ -29,7 +29,7 @@ html, body
 
 .chapter {
     line-height: 140px;
-    padding-left: 100px;
+    padding: 100px 0 0 100px;
 }
 
 .sentence {
@@ -50,7 +50,6 @@ html, body
         }
 
             .sentence span span:first-child {
-                border: 1px solid blue;
                 font-size: 20px;
                 line-height: 20px;
                 text-align: center;
@@ -60,3 +59,15 @@ html, body
                 line-height: 35px;
                 font-size: 33px;
             }
+
+::placeholder {
+    color: black;
+}
+
+:-ms-input-placeholder {
+    color: black;
+}
+
+::-ms-input-placeholder {
+    color: black;
+}

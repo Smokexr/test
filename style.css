@@ -44,3 +44,15 @@
         .sentence span span:last-child {
             line-height: 25px;
         }
+
+::placeholder {
+    color: black;
+}
+
+:-ms-input-placeholder {
+    color: black;
+}
+
+::-ms-input-placeholder {
+    color: black;
+}

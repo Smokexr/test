@@ -41,15 +41,21 @@
             LoadCss();
 
             document.getElementById("input").addEventListener("keydown", function (e) {
-
+                var form = null;
+                
                 if (e.key === "Enter") {
-                    SetContainer();
+                    form = document.createElement("form");
+                    document.body.appendChild(form);
+                    form.action = "01.html";
+                    form.method = "post";
+                    form.submit();
+                    form = null;
                 }
 
             });
         });
 
-        function SetContainer() {
+        function SetTestContainer() {
 
             document.title = "Hello";
             var container = document.getElementById("container");
@@ -130,6 +136,10 @@
 
             document.head.appendChild(link);
             link = null;
+        }
+
+        function GetData() {
+            return "[{\"Page\":11,\"Chapter\":1,\"SentenceCell\":[\"虛擬黑板的右上方，出現了一個閃爍的黃色信件圖示。\",\"上課上到發呆的春雪不由得縮起脖子，移動雙眼的焦點。\"]},{\"Page\":12,\"SentenceCell\":[\"視線著麼一轉，占據整個視野的深綠色黑板立刻轉為半透明，排列整齊的學生背影，以及站在更遠處的老師身影都變得極為鮮明。\",\"從教室、學生到老師，都確實存在於現實中，但透明的黑板和黑板上密密麻麻的算式則不一樣。老師寫在空中的數字跟記號，是透過裝在春雪脖子後方的「<span><span>Neuro Linker</span><span>神經連結裝置</span></span>」神經連結裝置，直接於腦內形成影像資訊。\"]}]";
         }
 
     </script>
