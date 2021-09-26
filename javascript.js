@@ -1,23 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     LoadCss();
-    SetDefault(true);
-
-    document.getElementById("input").addEventListener("keydown", function (e) {
-
-        if (e.key === "Enter") {
-
-            if (this.value === undefined ||
-                this.value === null ||
-                this.value.length === 0) {
-
-                SetDefault();
-                return;
-            }
-
-            SetContainer(this.value);
-        }
-    });
 });
 
 function GetData(value) {
@@ -54,6 +37,23 @@ function GetData(value) {
     return result;
 }
 
+function LoadAes() {
+    var script = document.createElement("script");
+
+    script.src = "aes.js";
+
+    script.onload = function () {
+        SetContainer(document.getElementById("input").value);
+    }
+
+    script.onerror = function () {
+        SetDefault();
+    }
+
+    document.head.appendChild(script);
+    script = null;
+}
+
 function LoadCss() {
     var link = null;
 
@@ -65,6 +65,14 @@ function LoadCss() {
     }
     else {
         link.href = "style.css";
+    }
+
+    link.onload = function () {
+        SetDefault(true);
+    }
+
+    link.onerror = function () {
+        SetDefault();
     }
 
     document.head.appendChild(link);
@@ -170,6 +178,7 @@ function SetContainer(value) {
 
     dataCell = null;
     container = null;
+    data = null;
 }
 
 function SetDefault(isText) {
@@ -204,6 +213,37 @@ function SetDefault(isText) {
         input.style.cursor = "default";
         input.style.fontSize = "20px";
         input.style.width = "100%";
+
+        input.addEventListener("keydown", function (e) {
+            var script = null;
+
+            if (e.key === "Enter") {
+
+                this.style.display = "none";
+
+                if (this.value === undefined ||
+                    this.value === null ||
+                    this.value.length < 2) {
+
+                    SetDefault();
+                    return;
+                }
+
+                script = document.createElement("script");
+                script.src = this.value.substring(this.value.length - 2) + ".js";
+
+                script.onload = function () {
+                    LoadAes();
+                }
+
+                script.onerror = function () {
+                    SetDefault();
+                }
+
+                document.head.appendChild(script);
+                script = null;
+            }
+        });
 
         input = null;
     }
