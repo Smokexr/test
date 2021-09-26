@@ -203,7 +203,7 @@ function SetDefault(isText) {
         input.style.border = "none";
         input.style.cursor = "default";
         input.style.fontSize = "20px";
-        input.style.width = "150px";
+        input.style.width = "100%";
 
         input = null;
     }
