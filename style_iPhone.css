@@ -58,6 +58,7 @@ html, body
 
             .sentence span span:last-child {
                 line-height: 1.3em;
+                text-align: center;
             }
 
 ::placeholder {

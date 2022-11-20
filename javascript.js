@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function() {
 
     LoadCss();
-});
+};
 
 function GetData(value) {
-    var result = null;
+    let result = null;
 
     if (value === undefined ||
         value === null ||
@@ -38,7 +38,7 @@ function GetData(value) {
 }
 
 function LoadAes() {
-    var script = document.createElement("script");
+    let script = document.createElement("script");
 
     script.src = "aes.js";
 
@@ -55,7 +55,7 @@ function LoadAes() {
 }
 
 function LoadCss() {
-    var link = null;
+    let link = null;
 
     link = document.createElement("link");
     link.rel = "stylesheet";
@@ -80,13 +80,13 @@ function LoadCss() {
 }
 
 function SetContainer(value) {
-    var dataCell = null;
-    var container = null;
-    var pageData = null;
-    var page = null;
-    var pageValue = null;
-    var chapter = null;
-    var sentence = null;
+    let dataCell = null;
+    let container = null;
+    let pageData = null;
+    let page = null;
+    let pageValue = null;
+    let chapter = null;
+    let sentence = null;
 
     if (value === undefined ||
         value === null ||
@@ -130,7 +130,7 @@ function SetContainer(value) {
 
     container.innerHTML = "";
 
-    for (var pageIndex = 0; pageIndex < dataCell.length; pageIndex++) {
+    for (let pageIndex = 0; pageIndex < dataCell.length; pageIndex++) {
         pageData = dataCell[pageIndex];
 
         if (pageData.Title !== undefined && pageData.Title !== null) {
@@ -164,7 +164,7 @@ function SetContainer(value) {
             continue;
         }
 
-        for (var i = 0; i < pageData.SentenceCell.length; i++) {
+        for (let i = 0; i < pageData.SentenceCell.length; i++) {
             sentence = document.createElement("div");
             page.appendChild(sentence);
             sentence.className = "sentence";
@@ -182,8 +182,8 @@ function SetContainer(value) {
 }
 
 function SetDefault(isText) {
-    var container = document.getElementById("container");
-    var input = null;
+    let container = document.getElementById("container");
+    let input = null;
 
     if (isText !== true) {
         isText = false;
@@ -215,7 +215,7 @@ function SetDefault(isText) {
         input.style.width = "100%";
 
         input.addEventListener("keydown", function (e) {
-            var script = null;
+            let script = null;
 
             if (e.key === "Enter") {
 
