@@ -28,13 +28,13 @@
 
     .sentence span {
         display: inline-block;
-        text-align: center;
         text-indent: 0;
     }
 
         .sentence span span {
             display: block;
             text-align: center;
+            white-space: pre;
         }
 
             .sentence span span:first-child {

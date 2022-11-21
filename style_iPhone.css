@@ -50,6 +50,7 @@ html, body
         .sentence span span {
             display: block;
             text-align: center;
+            white-space: pre;
         }
 
             .sentence span span:first-child {
