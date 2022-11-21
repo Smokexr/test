@@ -43,22 +43,22 @@ html, body
 
     .sentence span {
         display: inline-block;
+        text-align: center;
         text-indent: 0;
     }
 
         .sentence span span {
             display: block;
+            text-align: center;
         }
 
             .sentence span span:first-child {
                 font-size: 0.5em;
                 line-height: 1em;
-                text-align: center;
             }
 
             .sentence span span:last-child {
                 line-height: 1.3em;
-                text-align: center;
             }
 
 ::placeholder {
