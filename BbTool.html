@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>BB Tool</title>
+
+    <style>
+        * {
+            font-family: "Microsoft JhengHei"
+        }
+
+        html {
+            Height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            Height: 100%;
+        }
+
+        #tagCell {
+            padding: 10px 10px 0 10px;
+            z-index: 1;
+        }
+
+            #tagCell > span {
+                display: inline-block;
+                border: 1px solid black;
+                border-radius: 10px 10px 0 0;
+                cursor: pointer;
+                padding: 5px 10px;
+            }
+
+            #tagCell > span:hover {
+                background-color: lightgray;
+            }
+
+            #tagCell > span.selected {
+                border-bottom-color: white;
+                cursor: default;
+            }
+
+            #tagCell > span.selected:hover {
+                background-color: transparent;
+            }
+
+        #container {
+            border-top: 1px solid black;
+            height: calc(100% - 52px);
+            overflow: auto;
+            margin-top: -1px;
+            padding-bottom: 10px;
+            z-index: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="tagCell">
+        <span id="getHtmlText">Get Html Text</span>
+        <span id="getName">Get Name</span>
+    </div>
+
+    <div id="container" />
+
+    <script>
+
+        window.onload = SwitchTag;
+
+        function SwitchTag() {
+
+            let selectedTagId = null;
+            let tagCell = document.querySelector("#tagCell");
+
+            document.querySelector("#container").innerText = "";
+
+            if (this instanceof Window)
+            {
+                selectedTagId = tagCell.children[0].id;
+            }
+            else
+            {
+                selectedTagId = this.id;
+            }
+
+            for(let i = 0; i < tagCell.children.length; i ++)
+            {
+                if (tagCell.children[i].id === selectedTagId)
+                {
+                    tagCell.children[i].classList.add("selected");
+                    tagCell.children[i].onclick = null;
+
+                    if (tagCell.children[i].id === tagCell.children[0].id) SetGetHtmlText();
+                    if (tagCell.children[i].id === tagCell.children[1].id) SetGetName();
+                }
+                else
+                {
+                    tagCell.children[i].classList.remove("selected");
+                    tagCell.children[i].onclick = SwitchTag;
+                }
+            }
+
+            tagCell = null;
+        }
+
+        function SetGetHtmlText()
+        {
+            let container = document.querySelector("#container");
+            let element = null;
+            let history = null;
+            let historyCell = [
+                ["Anomaly", "矛盾存在"],
+                ["Choir Chime", "聖歌搖鈴"],
+                ["Elements", "四大元素"],
+                ["Invulnerable", "絕對防禦"],
+                ["Judgement Blow", "處決攻擊"],
+                ["Nega Nebulus", "黑暗星雲"],
+                ["Prominence", "日珥"],
+                ["Six Armor", "六層裝甲"]
+            ];
+
+            element = document.createElement("div");
+            container.appendChild(element);
+            element.innerText = "上標";
+            element.style.cursor = "default";
+            element.style.margin = "5px 0 2px 10px";
+            element = null;
+
+            element = document.createElement("input");
+            container.appendChild(element);
+            element.id = "textAnnotation";
+            element.type = "text";
+            element.style.marginLeft = "10px";
+            element.style.width = "calc(100% - 30px)";
+            element = null;
+
+            element = document.createElement("div");
+            container.appendChild(element);
+            element.innerText = "本文";
+            element.style.cursor = "default";
+            element.style.margin = "10px 0 2px 10px";
+            element = null;
+
+            element = document.createElement("input");
+            container.appendChild(element);
+            element.id = "textKeyword";
+            element.type = "text";
+            element.style.marginLeft = "10px";
+            element.style.width = "calc(100% - 30px)";
+            element = null;
+
+            element = document.createElement("input");
+            container.appendChild(element);
+            element.id = "buttonGetHtml";
+            element.type = "button";
+            element.value = "Get Html";
+            element.style.cursor = "pointer";
+            element.style.display = "inline-block";
+            element.style.margin = "20px 0 0 10px";
+            element.onclick = GetHtml;
+            element = null;
+
+            element = document.createElement("input");
+            container.appendChild(element);
+            element.id = "buttonCopy";
+            element.type = "button";
+            element.value = "Copy";
+            element.style.cursor = "pointer";
+            element.style.display = "inline-block";
+            element.style.margin = "20px 0 0 20px";
+            element.onclick = Copy;
+            element = null;
+
+            element = document.createElement("input");
+            container.appendChild(element);
+            element.id = "buttonClear";
+            element.type = "button";
+            element.value = "Clear";
+            element.style.cursor = "pointer";
+            element.style.display = "inline-block";
+            element.style.margin = "20px 0 0 20px";
+            element.onclick = Clear;
+            element = null;
+
+            element = document.createElement("div");
+            container.appendChild(element);
+            element.id = "result";
+            element.style.borderTop = "1px solid black";
+            element.style.cursor = "default";
+            element.style.marginTop = "15px";
+            element.style.padding = "5px";
+            element = null;
+
+            history = document.createElement("div");
+            container.appendChild(history);
+            history.id = "historyCell";
+            history.style.borderTop = "1px solid black";
+            history.style.marginTop = "5px";
+
+            for(let i = 0; i < historyCell.length; i++)
+            {
+                if (historyCell[i].length !== 2) 
+                {
+                    continue;
+                }
+
+                element = document.createElement("input");
+                history.appendChild(element);
+                element.name = "historyItem";
+                element.type = "radio";
+                element.value = Combine(historyCell[i][0], historyCell[i][1]);
+                element.style.cursor = "pointer";
+                element.style.display = "inline-block";
+                element.style.margin = "10px 0 0 10px";
+                element.onclick = function() { SetClipboard(this.value); };
+                element = null;
+
+                element = document.createElement("span");
+                history.appendChild(element);
+                element.innerText = historyCell[i].join(" ");
+                element.style.cursor = "default";
+                element.style.display = "inline-block";
+                element.style.marginLeft = "10px";
+                element = null;
+
+                element = document.createElement("br");
+                history.appendChild(element);
+                element = null;
+            }
+
+            history = null;
+            container = null;
+
+            document.querySelector("#textAnnotation").onkeyup = Enter;
+            document.querySelector("#textKeyword").onkeyup = Enter;
+            GetHtml(false);
+
+            function Enter(event)
+            {
+                if (event !== undefined &&
+                    event !== null &&
+                    event.key === "Enter")
+                {
+                    event.preventDefault();
+                    GetHtml();
+                }
+            }
+        
+            function GetHtml(isCopy) {
+
+                if (isCopy !== false)
+                {
+                    isCopy = true;
+                }
+
+                document.querySelector("#result").innerText = Combine(
+                    document.querySelector("#textAnnotation").value,
+                    document.querySelector("#textKeyword").value
+                );
+
+                if (isCopy === true)
+                {    
+                    Copy();
+                }
+            }
+
+            function Combine(annotation, keyword) {
+
+                if (annotation === undefined ||
+                    annotation === null ||
+                    typeof (annotation) !== "string")
+                {
+                    annotation = "";
+                }
+
+                annotation = annotation.trim();
+
+                if (keyword === undefined ||
+                    keyword === null ||
+                    typeof (keyword) !== "string")
+                {
+                    keyword = "";
+                }
+
+                keyword = keyword.trim();
+
+                return "<span><span>" + annotation + "</span><span>" + keyword + "</span></span>";
+            }
+
+            function Copy() {
+
+                SetClipboard(document.querySelector("#result").innerText);
+            }
+
+            function SetClipboard(value) {
+
+                if (value === undefined ||
+                    value === null ||
+                    typeof (value) !== "string")
+                {
+                    value = "";
+                }
+
+                try {
+                    navigator.clipboard.writeText(value);
+                }
+                catch {
+                    alert("Copy failed.");
+                }
+            }
+
+            function Clear() {
+
+                document.querySelector("#textAnnotation").value = "";
+                document.querySelector("#textKeyword").value = "";
+
+                GetHtml(false);
+            }
+        }
+
+        function SetGetName()
+        {
+            let container = document.querySelector("#container");
+            let topBlock = null;
+            let listBlock = null;
+            let element = null;
+            let splitCell = null;
+            let nameCell = [
+                "⋯⋯ —— 「 」 ～ ． 〇 Ⅰ Ⅱ Ⅲ",
+                "Avocado Avoider",
+                "Aqua Current 冰見晶 冰見 晶",
+                "Argon Array",
+                "Ardor Maiden 四埜宮謠 四埜宮 謠",
+                "Ash Roller 日下部綸 日下部 綸",
+                "Aster Vine",
+                "Black Lotus 黑雪公主 黑雪 黑羽早雪",
+                "Black Vise",
+                "Blue Knight Impulse",
+                "Blood Leopard Pard 掛居美早 掛居 美早",
+                "BRAIN BURST",
+                "Centaurea Sentry Omega 鈴川瀨利 鈴川 瀨利",
+                "Cherry Rook",
+                "Chocolat Puppeteer 奈胡志帆子 奈胡 志帆子",
+                "Chrome Falcon Disaster",
+                "Chrome Disaster",
+                "Cobalt Blade 鈷 高野內琴 高野內 琴",
+                "Cyan Pile 黛拓武 黛 拓武",
+                "Cypress Reaper 鷺洲愛里 鷺洲 愛里",
+                "Dusk Taker 能美征二 能美 征二",
+                "Frost Horn",
+                "Glacier Behemoth 噴涕蟲 Sneezy 小清水理生 小清水 理生",
+                "Graphite Edge",
+                "Green Grandee Strife",
+                "Iron Pound",
+                "Ivory Tower",
+                "Lemon Pierrette",
+                "Lime Bell 倉嶋千百合 倉嶋 千百合",
+                "Magenta Scissor 小田切累 小田切 累",
+                "Mangan Blade 錳 高野內雪 高野內 雪",
+                "Mint Mitten 三登聖實 三登 聖實",
+                "Mirror Masker 四埜宮竟也 四埜宮 竟也",
+                "Mustard Salticid",
+                "Orchid Oracle 若宮惠 若宮 惠",
+                "Petit Paquet",
+                "Platinum Cavalier 害羞鬼 Bashful 京武智周 京武 智周",
+                "Plum Flipper 由留木結芽 由留木 結芽",
+                "Purple Thorn Tempest",
+                "Red Rider",
+                "Rose Milady 暴躁鬼 Grumpy 越賀莟 越賀 莟",
+                "Rust Jigsaw",
+                "Saffron Blossom",
+                "Scarlet Rain 上月由仁子 上月由 仁子",
+                "Silver Crow 有田春雪 有田 春雪",
+                "Suntan Chafer",
+                "Sky Raker 倉崎楓子 倉崎 楓子",
+                "Snow Fairy 瞌睡蟲 Sleepy 約赫爾特七七子 約赫爾特 七七子",
+                "Thistle Porcupine 波奇",
+                "Trilead Tetraoxide Lead Infinity",
+                "Yellow Radio",
+                "White Cosmos Luminary 黑羽苑珠 黑羽 苑珠",
+                "Wolfram Cerberus",
+                "Wolfram Disaster"
+            ];
+
+            topBlock = document.createElement("div");
+            container.appendChild(topBlock);
+
+            listBlock = document.createElement("div");
+            container.appendChild(listBlock);
+            listBlock.style.overflow = "auto";
+
+            for(let i = 0; i < nameCell.length; i++)
+            {
+                element = document.createElement("input");
+                if (i === 0)
+                {
+                    topBlock.appendChild(element);
+                }
+                else
+                {
+                    listBlock.appendChild(element);
+                }
+                element.name = "roleName";
+                element.type = "radio";
+                element.value = nameCell[i].split(" ", 2).join(" ");
+                element.style.cursor = "pointer";
+                element.style.display = "inline-block";
+                element.style.margin = "10px 0 0 10px";
+                element.onclick = function() { Copy(this.value); };
+                element = null;
+
+                splitCell = nameCell[i].split(" ");
+
+                for(let s = 0; s < splitCell.length; s++)
+                {
+                    element = document.createElement("span");
+                    if (i === 0)
+                    {
+                        topBlock.appendChild(element);
+                    }
+                    else
+                    {
+                        listBlock.appendChild(element);
+                    }
+                    element.innerText = splitCell[s];
+                    element.style.cursor = "pointer";
+                    element.style.display = "inline-block";
+                    element.style.marginLeft = "10px";
+                    element.onclick = function() { Copy(this.innerText); };
+                    element = null;
+                }
+
+                element = document.createElement("br");
+                if (i === 0)
+                {
+                    topBlock.appendChild(element);
+                }
+                else
+                {
+                    listBlock.appendChild(element);
+                }
+                element = null;
+            }
+
+            console.log(topBlock.offsetHeight);
+
+            listBlock.style.height = "calc(100% - 29px)";
+            listBlock.style.overflow = "auto";
+
+            container = null;
+            topBlock = null;
+            listBlock = null;
+
+            function Copy(value) {
+
+                if (value === undefined ||
+                    value === null ||
+                    typeof(value) !== "string")
+                {
+                    value = "";
+                }
+
+                try {
+                    navigator.clipboard.writeText(value);
+                }
+                catch {
+                    alert("Copy failed.");
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>
