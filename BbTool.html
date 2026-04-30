@@ -32,18 +32,18 @@
                 padding: 5px 10px;
             }
 
-            #tagCell > span:hover {
-                background-color: lightgray;
-            }
+                #tagCell > span:hover {
+                    background-color: lightgray;
+                }
 
-            #tagCell > span.selected {
-                border-bottom-color: white;
-                cursor: default;
-            }
+                #tagCell > span.selected {
+                    border-bottom-color: white;
+                    cursor: default;
+                }
 
-            #tagCell > span.selected:hover {
-                background-color: transparent;
-            }
+                    #tagCell > span.selected:hover {
+                        background-color: transparent;
+                    }
 
         #container {
             border-top: 1px solid black;
@@ -53,7 +53,6 @@
             padding-bottom: 10px;
             z-index: 0;
         }
-
     </style>
 </head>
 <body>
@@ -76,27 +75,22 @@
 
             document.querySelector("#container").innerText = "";
 
-            if (this instanceof Window)
-            {
+            if (this instanceof Window) {
                 selectedTagId = tagCell.children[0].id;
             }
-            else
-            {
+            else {
                 selectedTagId = this.id;
             }
 
-            for(let i = 0; i < tagCell.children.length; i ++)
-            {
-                if (tagCell.children[i].id === selectedTagId)
-                {
+            for (let i = 0; i < tagCell.children.length; i++) {
+                if (tagCell.children[i].id === selectedTagId) {
                     tagCell.children[i].classList.add("selected");
                     tagCell.children[i].onclick = null;
 
                     if (tagCell.children[i].id === tagCell.children[0].id) SetGetHtmlText();
                     if (tagCell.children[i].id === tagCell.children[1].id) SetGetName();
                 }
-                else
-                {
+                else {
                     tagCell.children[i].classList.remove("selected");
                     tagCell.children[i].onclick = SwitchTag;
                 }
@@ -105,14 +99,14 @@
             tagCell = null;
         }
 
-        function SetGetHtmlText()
-        {
+        function SetGetHtmlText() {
             let container = document.querySelector("#container");
             let element = null;
             let history = null;
             let historyCell = [
                 ["Anomaly", "矛盾存在"],
                 ["Choir Chime", "聖歌搖鈴"],
+                ["Crypt Cosmic Circus", "宇宙秘境馬戲團"],
                 ["Elements", "四大元素"],
                 ["Invulnerable", "絕對防禦"],
                 ["Judgement Blow", "處決攻擊"],
@@ -199,10 +193,8 @@
             history.style.borderTop = "1px solid black";
             history.style.marginTop = "5px";
 
-            for(let i = 0; i < historyCell.length; i++)
-            {
-                if (historyCell[i].length !== 2) 
-                {
+            for (let i = 0; i < historyCell.length; i++) {
+                if (historyCell[i].length !== 2) {
                     continue;
                 }
 
@@ -214,7 +206,7 @@
                 element.style.cursor = "pointer";
                 element.style.display = "inline-block";
                 element.style.margin = "10px 0 0 10px";
-                element.onclick = function() { SetClipboard(this.value); };
+                element.onclick = function () { SetClipboard(this.value); };
                 element = null;
 
                 element = document.createElement("span");
@@ -237,21 +229,18 @@
             document.querySelector("#textKeyword").onkeyup = Enter;
             GetHtml(false);
 
-            function Enter(event)
-            {
+            function Enter(event) {
                 if (event !== undefined &&
                     event !== null &&
-                    event.key === "Enter")
-                {
+                    event.key === "Enter") {
                     event.preventDefault();
                     GetHtml();
                 }
             }
-        
+
             function GetHtml(isCopy) {
 
-                if (isCopy !== false)
-                {
+                if (isCopy !== false) {
                     isCopy = true;
                 }
 
@@ -260,8 +249,7 @@
                     document.querySelector("#textKeyword").value
                 );
 
-                if (isCopy === true)
-                {    
+                if (isCopy === true) {
                     Copy();
                 }
             }
@@ -270,8 +258,7 @@
 
                 if (annotation === undefined ||
                     annotation === null ||
-                    typeof (annotation) !== "string")
-                {
+                    typeof (annotation) !== "string") {
                     annotation = "";
                 }
 
@@ -279,8 +266,7 @@
 
                 if (keyword === undefined ||
                     keyword === null ||
-                    typeof (keyword) !== "string")
-                {
+                    typeof (keyword) !== "string") {
                     keyword = "";
                 }
 
@@ -298,8 +284,7 @@
 
                 if (value === undefined ||
                     value === null ||
-                    typeof (value) !== "string")
-                {
+                    typeof (value) !== "string") {
                     value = "";
                 }
 
@@ -320,8 +305,7 @@
             }
         }
 
-        function SetGetName()
-        {
+        function SetGetName() {
             let container = document.querySelector("#container");
             let topBlock = null;
             let listBlock = null;
@@ -391,15 +375,12 @@
             container.appendChild(listBlock);
             listBlock.style.overflow = "auto";
 
-            for(let i = 0; i < nameCell.length; i++)
-            {
+            for (let i = 0; i < nameCell.length; i++) {
                 element = document.createElement("input");
-                if (i === 0)
-                {
+                if (i === 0) {
                     topBlock.appendChild(element);
                 }
-                else
-                {
+                else {
                     listBlock.appendChild(element);
                 }
                 element.name = "roleName";
@@ -408,37 +389,32 @@
                 element.style.cursor = "pointer";
                 element.style.display = "inline-block";
                 element.style.margin = "10px 0 0 10px";
-                element.onclick = function() { Copy(this.value); };
+                element.onclick = function () { Copy(this.value); };
                 element = null;
 
                 splitCell = nameCell[i].split(" ");
 
-                for(let s = 0; s < splitCell.length; s++)
-                {
+                for (let s = 0; s < splitCell.length; s++) {
                     element = document.createElement("span");
-                    if (i === 0)
-                    {
+                    if (i === 0) {
                         topBlock.appendChild(element);
                     }
-                    else
-                    {
+                    else {
                         listBlock.appendChild(element);
                     }
                     element.innerText = splitCell[s];
                     element.style.cursor = "pointer";
                     element.style.display = "inline-block";
                     element.style.marginLeft = "10px";
-                    element.onclick = function() { Copy(this.innerText); };
+                    element.onclick = function () { Copy(this.innerText); };
                     element = null;
                 }
 
                 element = document.createElement("br");
-                if (i === 0)
-                {
+                if (i === 0) {
                     topBlock.appendChild(element);
                 }
-                else
-                {
+                else {
                     listBlock.appendChild(element);
                 }
                 element = null;
@@ -457,8 +433,7 @@
 
                 if (value === undefined ||
                     value === null ||
-                    typeof(value) !== "string")
-                {
+                    typeof (value) !== "string") {
                     value = "";
                 }
 
